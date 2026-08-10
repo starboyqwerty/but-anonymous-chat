@@ -3,7 +3,7 @@
 A Telegram bot that pairs university students into anonymous one-to-one conversations.
 
 Built in 2024 for the student body at Bucheon University in Tashkent. It reached **300+ active
-users and 76 simultaneous chats — 152 people talking at the same time — within the first month**,
+users and 76 simultaneous chats - 152 people talking at the same time - within the first month**,
 entirely on word of mouth, with zero marketing spend, before being shut down administratively.
 
 ![Live user and chat counters](docs/stats.jpg)
@@ -47,20 +47,20 @@ Photos and videos are relayed between partners, not just text.
 ## How it works
 
 ```
-Telegram  ──►  bot.py            long-polling handlers, message relay
-                 │
-                 ├── config.py    env-based configuration
-                 │
-                 └── database.py  SQLite access layer
-                        │
-                        ├── users   chat_id, gender, username, ban
-                        ├── queue   who is currently waiting
-                        └── chats   active pairs (chat_one ↔ chat_two)
+Telegram  -->  bot.py            long-polling handlers, message relay
+                 |
+                 +-- config.py    env-based configuration
+                 |
+                 +-- database.py  SQLite access layer
+                        |
+                        +-- users   chat_id, gender, username, ban
+                        +-- queue   who is currently waiting
+                        +-- chats   active pairs (chat_one <-> chat_two)
 ```
 
 Three tables is the whole model. `queue` holds everyone waiting, `chats` holds the live pairings,
 and a match is just a row moving from one to the other. Keeping the state that small is why a
-single-file bot could hold 76 concurrent conversations — 152 users at once — without trouble.
+single-file bot could hold 76 concurrent conversations - 152 users at once - without trouble.
 
 ## Running it
 
@@ -89,18 +89,18 @@ The SQLite file is created automatically on first run.
 
 The original production database is **not** in this repository and never will be. It held real
 Telegram user ids and usernames from students who used the bot expecting anonymity. `*.db` is in
-`.gitignore` for that reason — if you fork this, keep it that way.
+`.gitignore` for that reason - if you fork this, keep it that way.
 
 ## What I learned
 
 The bot spread without a single post promoting it, which taught me more about distribution than
 anything I built deliberately afterwards. Anonymity was the whole product: the moment you strip it
-out, the reason to open the bot disappears. Everything else — gender matching, media relay, admin
-tooling — was secondary to protecting that one property.
+out, the reason to open the bot disappears. Everything else - gender matching, media relay, admin
+tooling - was secondary to protecting that one property.
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT - see [LICENSE](LICENSE).
 
 ---
 
