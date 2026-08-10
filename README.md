@@ -3,8 +3,8 @@
 A Telegram bot that pairs university students into anonymous one-to-one conversations.
 
 Built in 2024 for the student body at Bucheon University in Tashkent. It reached **300+ active
-users and 76 simultaneous chats within the first month**, entirely on word of mouth, with zero
-marketing spend — before being shut down administratively.
+users and 76 simultaneous chats — 152 people talking at the same time — within the first month**,
+entirely on word of mouth, with zero marketing spend, before being shut down administratively.
 
 ![Live user and chat counters](docs/stats.jpg)
 
@@ -60,7 +60,7 @@ Telegram  ──►  bot.py            long-polling handlers, message relay
 
 Three tables is the whole model. `queue` holds everyone waiting, `chats` holds the live pairings,
 and a match is just a row moving from one to the other. Keeping the state that small is why a
-single-file bot could hold 76 concurrent conversations without trouble.
+single-file bot could hold 76 concurrent conversations — 152 users at once — without trouble.
 
 ## Running it
 
